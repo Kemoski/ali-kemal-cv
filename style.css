@@ -1,0 +1,186 @@
+:root {
+    --bg-color: #050505; /* Uzay siyahı */
+    --container-bg: transparent; /* KAPSAYICI ARKA PLANI ŞEFFAF OLDU */
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-main: #ffffff;
+    --text-sec: #b0b0b0;
+    --accent: #ffffff;
+    
+    --navbar-bg: rgba(5, 5, 5, 0.9); 
+    --navbar-text: #ffffff; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+#bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.logo { 
+    font-weight: 700; 
+    letter-spacing: 2px; 
+    font-size: 1.2rem; 
+    cursor: pointer; 
+    color: var(--navbar-text);
+}
+
+.nav-links { list-style: none; display: flex; gap: 20px; }
+
+.nav-links a { 
+    text-decoration: none; 
+    color: #ccc; 
+    font-size: 0.9rem; 
+    font-weight: 600;
+    transition: 0.3s; 
+}
+
+.nav-links a:hover { color: #fff; } 
+
+/* ANA KAPSAYICI (Artık arka plansız, sadece içeriği ortalıyor) */
+.main-container {
+    max-width: 900px; 
+    margin: 110px auto 50px auto;
+    /* Önceki arka plan, blur, border ve shadow kaldırıldı */
+    /* background: var(--container-bg); */
+    /* backdrop-filter: blur(10px); */
+    /* border-radius: 25px; */
+    /* border: 1px solid rgba(255, 255, 255, 0.08); */
+    /* box-shadow: 0 0 60px rgba(0,0,0,0.6); */
+    padding: 40px 30px; /* İç boşluklar aynı kaldı */
+    position: relative; /* Z-index yönetimi için */
+    z-index: 10; /* Küplerin altında kalması için */
+}
+
+.section {
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 300; letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;}
+
+.hero {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-wrapper {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 25px;
+    border: 3px solid rgba(255,255,255,0.2);
+    position: relative;
+    box-shadow: 0 0 30px rgba(255,255,255,0.1);
+}
+
+.profile-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.fallback-avatar {
+    width: 100%; height: 100%; background: #222; display: none;
+    justify-content: center; align-items: center; font-size: 2rem; color: #555;
+}
+
+.hero h1 { font-size: 3rem; margin-bottom: 10px; font-weight: 700; }
+.hero p { color: var(--text-sec); font-size: 1.1rem; margin-bottom: 30px; }
+.social-links { display: flex; justify-content: center; gap: 20px; font-size: 1.5rem; }
+.social-links a { color: var(--text-main); transition: 0.3s; }
+.social-links a:hover { color: var(--text-sec); transform: scale(1.1); }
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 800px;
+    width: 100%;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.clickable-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.tags { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tags span {
+    font-size: 0.75rem; padding: 5px 12px;
+    background: rgba(255,255,255,0.15); border-radius: 20px; color: var(--text-main);
+}
+
+.exp-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+.icon-box { font-size: 1.5rem; color: var(--text-main); }
+.exp-header h3 { font-size: 1.2rem; }
+.exp-header h4 { font-size: 0.9rem; color: var(--text-sec); font-weight: 400; }
+.exp-desc { font-size: 0.95rem; line-height: 1.6; color: #ccc; }
+
+.grid-container {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; width: 100%;
+}
+
+.badge {
+    display: inline-block; margin-top: 15px; padding: 5px 10px;
+    border: 1px solid var(--accent); font-size: 0.8rem; border-radius: 4px;
+}
+
+.cert-card { text-align: center; padding: 25px; }
+.cert-icon { font-size: 2rem; margin-bottom: 15px; opacity: 0.8; }
+
+.contact-card { text-align: center; }
+.contact-item { display: flex; flex-direction: column; gap: 10px; align-items: center; color: var(--text-main); font-size: 1.1rem; }
+footer { margin-top: 50px; font-size: 0.8rem; color: #444; }
+
+.active-click { animation: clickEffect 0.2s ease forwards; }
+@keyframes clickEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .main-container { padding: 20px; width: 95%; margin-top: 90px;}
+    .hero h1 { font-size: 2rem; }
+}
