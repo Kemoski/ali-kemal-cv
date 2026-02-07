@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Kemal Akdeniz | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <canvas id="bgCanvas"></canvas>
+
+    <nav class="navbar">
+        <div class="logo clickable">Ali Kemal Akdeniz</div>
+
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#home" class="clickable" data-key="nav_home">Home</a></li>
+                <li><a href="#about" class="clickable" data-key="nav_about">About</a></li>
+                <li><a href="#projects" class="clickable" data-key="nav_projects">Projects</a></li>
+                <li><a href="#experience" class="clickable" data-key="nav_experience">Experience</a></li>
+                <li><a href="#certificates" class="clickable" data-key="nav_certificates">Certificates</a></li>
+                <li><a href="#contact" class="clickable" data-key="nav_contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="cv.pdf" download class="btn-download clickable">
+                    <i class="fas fa-download"></i> <span data-key="btn_cv">Download CV</span>
+                </a>
+                <div class="lang-flags">
+                    <img src="https://flagcdn.com/w40/gb.png" alt="English" class="flag clickable"
+                        onclick="setLanguage('en')">
+                    <img src="https://flagcdn.com/w40/tr.png" alt="Türkçe" class="flag clickable"
+                        onclick="setLanguage('tr')">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+
+        <section id="home" class="hero">
+            <div class="content">
+                <div class="profile-wrapper clickable">
+                    <img src="profile.jpg" alt="Profile Photo"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="fallback-avatar">AKA</div>
+                </div>
+                <h1>Ali Kemal Akdeniz</h1>
+                <p data-key="hero_subtitle">Computer Engineering Student | AI & Deep Learning Enthusiast</p>
+                <div class="social-links">
+                    <a href="https://github.com/Kemoski" target="_blank" class="clickable"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/ali-kemal-akdeniz-73015b284/" target="_blank"
+                        class="clickable"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://instagram.com/alikemll_" target="_blank" class="clickable"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2 data-key="nav_about">About Me</h2>
+            <div class="card clickable-card">
+                <p data-key="about_desc">
+                    I am Ali Kemal Akdeniz, a 3rd-year Computer Engineering student at Selçuk University (GPA: 3.61). I
+                    am developing my skills in Machine Learning, Deep Learning, and Artificial Intelligence, and I
+                    frequently use PyTorch, TensorFlow, and Keras while working on model training and experimentation. I
+                    also use OpenCV for various vision-related tasks and work on image processing in the university's
+                    UAV (IHA) team, as I continue exploring how AI techniques can be applied to real-world problems.
+                </p>
+                <div class="tags">
+                    <span>Python</span>
+                    <span>Machine Learning</span>
+                    <span>Deep Learning</span>
+                    <span>YOLO</span>
+                    <span>PyTorch</span>
+                    <span>TensorFlow</span>
+                    <span>OpenCV</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2 data-key="nav_projects">Projects</h2>
+            <div class="grid-container">
+                <a href="https://github.com/Kemoski/Classification_Of_Wild_Birds" target="_blank"
+                    class="card clickable-card project-card">
+                    <div class="icon"><i class="fas fa-crow"></i></div>
+                    <h3 data-key="proj_bird_title">Bird Species Classification</h3>
+                    <p data-key="proj_bird_desc">A deep learning model that classifies different bird species using CNNs
+                        and transfer learning.</p>
+                    <span class="project-link"><i class="fab fa-github"></i> GitHub</span>
+                </a>
+
+                <a href="https://github.com/Kemoski/yoloapp" target="_blank" class="card clickable-card project-card">
+                    <div class="icon"><i class="fas fa-user-secret"></i></div>
+                    <h3 data-key="proj_face_title">Face Detection with YOLOv8</h3>
+                    <p data-key="proj_face_desc">Real-time face detection system using YOLOv8 with dual camera support,
+                        FPS tracking, and MP4 video recording.</p>
+                    <span class="project-link"><i class="fab fa-github"></i> GitHub</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <h2 data-key="nav_experience">Experience</h2>
+            <div class="card clickable-card">
+                <div class="exp-header">
+                    <img src="bagen_logo.png" alt="Bagen Logo" class="company-logo" onerror="this.style.display='none'">
+                    <div>
+                        <h3 data-key="exp_role">Intern Engineer</h3>
+                        <h4>BAGEN | SAB AUTOMOTIVE GROUP</h4>
+                    </div>
+                </div>
+                <p class="exp-desc" data-key="exp_desc">
+                    Gained practical experience in automotive production processes and observed software integration
+                    within the manufacturing industry.
+                </p>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2 data-key="section_education">Education</h2>
+            <div class="grid-container">
+                <div class="card clickable-card">
+                    <div class="icon"><i class="fas fa-university"></i></div>
+                    <h3 data-key="edu_uni_name">Selçuk University</h3>
+                    <p data-key="edu_uni_dept">Computer Engineering</p>
+                    <div class="badge">GPA: 3.61 / 4.00</div>
+                </div>
+                <div class="card clickable-card">
+                    <div class="icon"><i class="fas fa-school"></i></div>
+                    <h3 data-key="edu_hs_name">Ordu High School</h3>
+                    <p data-key="edu_hs_dept">Science Department</p>
+                    <div class="badge" data-key="edu_hs_rank">Valedictorian (1st Place)</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates" class="section">
+            <h2 data-key="nav_certificates">Certificates</h2>
+            <p class="section-subtitle" data-key="cert_subtitle">(Click to view)</p>
+            <div class="grid-container">
+                <div class="card clickable-card cert-card" onclick="openModal('cert1.jpg')">
+                    <i class="fas fa-certificate cert-icon"></i>
+                    <h3 data-key="cert_ml">Machine Learning</h3>
+                    <p>BTK ACADEMY</p>
+                </div>
+                <div class="card clickable-card cert-card" onclick="openModal('cert2.jpg')">
+                    <i class="fas fa-database cert-icon"></i>
+                    <h3 data-key="cert_sql">SQL with Applications</h3>
+                    <p>BTK ACADEMY</p>
+                </div>
+                <div class="card clickable-card cert-card" onclick="openModal('cert3.jpg')">
+                    <i class="fas fa-brain cert-icon"></i>
+                    <h3 data-key="cert_dl">Intro to Deep Learning</h3>
+                    <p>BTK ACADEMY</p>
+                </div>
+                <div class="card clickable-card cert-card" onclick="openModal('cert4.jpg')">
+                    <i class="fas fa-robot cert-icon"></i>
+                    <h3 data-key="cert_python_ml">Python ML Applications</h3>
+                    <p>BTK ACADEMY</p>
+                </div>
+                <div class="card clickable-card cert-card" onclick="openModal('cert5.jpg')">
+                    <i class="fas fa-eye cert-icon"></i>
+                    <h3 data-key="cert_yolo">YOLOv11 ile Bilgisayarlı Görü Pratikleri</h3>
+                    <p>BTK ACADEMY</p>
+                </div>
+                <div class="card clickable-card cert-card" onclick="openModal('cert6.jpg')">
+                    <i class="fas fa-shield-alt cert-icon"></i>
+                    <h3 data-key="cert_defense">Savunma Sanayii 401</h3>
+                    <p>DEFENCE INDUSTRY ACADEMY</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 data-key="nav_contact">Contact</h2>
+            <div class="card clickable-card contact-card">
+                <a href="mailto:kemalali994@gmail.com" class="contact-item clickable">
+                    <i class="fas fa-envelope"></i>
+                    <span>kemalali994@gmail.com</span>
+                </a>
+                <div class="contact-socials">
+                    <a href="https://www.linkedin.com/in/ali-kemal-akdeniz-73015b284/" class="clickable">LinkedIn</a> •
+                    <a href="https://github.com/Kemoski" class="clickable">GitHub</a> •
+                    <a href="https://instagram.com/alikemll_" class="clickable">Instagram</a>
+                </div>
+            </div>
+            <footer>© 2025 Ali Kemal Akdeniz</footer>
+        </section>
+
+    </div>
+
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
