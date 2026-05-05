@@ -375,6 +375,86 @@ footer {
     color: #444;
 }
 
+/* İLETİŞİM FORMU */
+.contact-form-card {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.contact-form-card h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: var(--text-sec);
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.contact-form-card input[type="email"],
+.contact-form-card textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.3s;
+    resize: vertical;
+}
+
+.contact-form-card input[type="email"]:focus,
+.contact-form-card textarea:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-form-card input.input-error {
+    border-color: rgba(255, 80, 80, 0.6);
+}
+
+.field-error {
+    display: none;
+    font-size: 0.78rem;
+    color: #ff6b6b;
+    margin-top: 5px;
+    padding-left: 4px;
+}
+
+.btn-send {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+    margin-top: 5px;
+}
+
+.btn-send:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-status {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    text-align: center;
+    min-height: 1.2em;
+}
+
+.contact-status.success { color: #6bffb8; }
+.contact-status.error   { color: #ff6b6b; }
+
 /* MODAL (RESİM PENCERESİ) */
 .modal {
     display: none;

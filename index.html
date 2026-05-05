@@ -71,7 +71,8 @@
                     am developing my skills in Machine Learning, Deep Learning, and Artificial Intelligence, and I
                     frequently use PyTorch, TensorFlow, and Keras while working on model training and experimentation. I
                     also use OpenCV for various vision-related tasks and work on image processing in the university's
-                    UAV (IHA) team, as I continue exploring how AI techniques can be applied to real-world problems.
+                    UAV (IHA) team. Additionally, I work with ROS (Robot Operating System) for robotic programming,
+                    integrating autonomous systems with AI-based perception.
                 </p>
                 <div class="tags">
                     <span>Python</span>
@@ -81,6 +82,7 @@
                     <span>PyTorch</span>
                     <span>TensorFlow</span>
                     <span>OpenCV</span>
+                    <span>ROS</span>
                 </div>
             </div>
         </section>
@@ -176,12 +178,16 @@
                     <h3 data-key="cert_defense">Savunma Sanayii 401</h3>
                     <p>DEFENCE INDUSTRY ACADEMY</p>
                 </div>
+                <div class="card clickable-card cert-card" onclick="openModal('cert7.png')">
+                    <i class="fas fa-cogs cert-icon"></i>
+                    <h3 data-key="cert_ros">ROS ile Robotik Programlama</h3>
+                </div>
             </div>
         </section>
 
         <section id="contact" class="section">
             <h2 data-key="nav_contact">Contact</h2>
-            <div class="card clickable-card contact-card">
+            <div class="card contact-card">
                 <a href="mailto:kemalali994@gmail.com" class="contact-item clickable">
                     <i class="fas fa-envelope"></i>
                     <span>kemalali994@gmail.com</span>
@@ -192,6 +198,34 @@
                     <a href="https://instagram.com/alikemll_" class="clickable">Instagram</a>
                 </div>
             </div>
+
+            <div class="card contact-form-card">
+                <h3 data-key="contact_form_title">Send me a message</h3>
+                <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                    <div class="form-group">
+                        <input
+                            type="email"
+                            id="senderEmail"
+                            data-key-placeholder="contact_email_placeholder"
+                            placeholder="Your email address"
+                            required
+                        >
+                        <span id="emailError" class="field-error" data-key="contact_invalid_email">Please enter a valid email address.</span>
+                    </div>
+                    <div class="form-group">
+                        <textarea
+                            id="senderMessage"
+                            data-key-placeholder="contact_message_placeholder"
+                            placeholder="Your message..."
+                            rows="5"
+                            required
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="btn-send clickable" data-key="contact_send">Send Message</button>
+                    <p id="contactStatus" class="contact-status"></p>
+                </form>
+            </div>
+
             <footer>© 2025 Ali Kemal Akdeniz</footer>
         </section>
 

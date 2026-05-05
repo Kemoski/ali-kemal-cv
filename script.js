@@ -9,7 +9,7 @@ const translations = {
         nav_contact: "Contact",
         btn_cv: "Download CV",
         hero_subtitle: "Computer Engineering Student | AI & Deep Learning Enthusiast",
-        about_desc: "I am Ali Kemal Akdeniz, a 3rd-year Computer Engineering student at Selçuk University (GPA: 3.61). I am developing my skills in Machine Learning, Deep Learning, and Artificial Intelligence, and I frequently use PyTorch, TensorFlow, and Keras while working on model training and experimentation. I also use OpenCV for various vision-related tasks and work on image processing in the university's UAV (IHA) team, as I continue exploring how AI techniques can be applied to real-world problems.",
+        about_desc: "I am Ali Kemal Akdeniz, a 3rd-year Computer Engineering student at Selçuk University (GPA: 3.61). I am developing my skills in Machine Learning, Deep Learning, and Artificial Intelligence, and I frequently use PyTorch, TensorFlow, and Keras while working on model training and experimentation. I also use OpenCV for various vision-related tasks and work on image processing in the university's UAV (IHA) team. Additionally, I work with ROS (Robot Operating System) for robotic programming, integrating autonomous systems with AI-based perception.",
         proj_bird_title: "Bird Species Classification",
         proj_bird_desc: "A deep learning model that classifies different bird species using CNNs and transfer learning.",
         proj_face_title: "Face Detection with YOLOv8",
@@ -28,7 +28,15 @@ const translations = {
         cert_dl: "Intro to Deep Learning",
         cert_python_ml: "Python ML Applications",
         cert_yolo: "YOLOv11 Computer Vision Practices",
-        cert_defense: "Defense Industry 401"
+        cert_defense: "Defense Industry 401",
+        cert_ros: "Robotic Programming with ROS",
+        contact_form_title: "Send me a message",
+        contact_email_placeholder: "Your email address",
+        contact_message_placeholder: "Your message...",
+        contact_send: "Send Message",
+        contact_invalid_email: "Please enter a valid email address.",
+        contact_success: "Your message has been sent successfully!",
+        contact_error: "Failed to send. Please try again."
     },
     tr: {
         nav_home: "Ana Sayfa",
@@ -39,7 +47,7 @@ const translations = {
         nav_contact: "İletişim",
         btn_cv: "CV İndir",
         hero_subtitle: "Bilgisayar Mühendisliği Öğrencisi | Yapay Zeka Geliştiricisi",
-        about_desc: "Ben Ali Kemal Akdeniz, Selçuk Üniversitesi Bilgisayar Mühendisliği 3. sınıf öğrencisiyim (GANO: 3.61). Makine Öğrenmesi, Derin Öğrenme ve Yapay Zeka alanlarında kendimi geliştiriyorum. Model eğitimi ve deneylerinde sıklıkla PyTorch, TensorFlow ve Keras kullanıyorum. Ayrıca görüntü işleme görevleri için OpenCV kullanıyor ve üniversitenin İHA takımında görüntü işleme üzerine çalışıyorum.",
+        about_desc: "Ben Ali Kemal Akdeniz, Selçuk Üniversitesi Bilgisayar Mühendisliği 3. sınıf öğrencisiyim (GANO: 3.61). Makine Öğrenmesi, Derin Öğrenme ve Yapay Zeka alanlarında kendimi geliştiriyorum. Model eğitimi ve deneylerinde sıklıkla PyTorch, TensorFlow ve Keras kullanıyorum. Ayrıca görüntü işleme görevleri için OpenCV kullanıyor ve üniversitenin İHA takımında görüntü işleme üzerine çalışıyorum. Bunun yanı sıra robotik programlama alanında ROS (Robot Operating System) ile çalışıyor, otonom sistemleri yapay zeka tabanlı algı ile entegre ediyorum.",
         proj_bird_title: "Kuş Türleri Sınıflandırma",
         proj_bird_desc: "CNN ve transfer öğrenme kullanarak farklı kuş türlerini sınıflandıran derin öğrenme modeli.",
         proj_face_title: "YOLOv8 ile Yüz Tespiti",
@@ -58,7 +66,15 @@ const translations = {
         cert_dl: "Derin Öğrenmeye Giriş",
         cert_python_ml: "Python ile ML Uygulamaları",
         cert_yolo: "YOLOv11 ile Bilgisayarlı Görü Pratikleri",
-        cert_defense: "Savunma Sanayii 401"
+        cert_defense: "Savunma Sanayii 401",
+        cert_ros: "ROS ile Robotik Programlama",
+        contact_form_title: "Bana mesaj gönder",
+        contact_email_placeholder: "E-posta adresiniz",
+        contact_message_placeholder: "Mesajınız...",
+        contact_send: "Mesaj Gönder",
+        contact_invalid_email: "Lütfen geçerli bir e-posta adresi girin.",
+        contact_success: "Mesajınız başarıyla gönderildi!",
+        contact_error: "Gönderilemedi. Lütfen tekrar deneyin."
     }
 };
 
@@ -69,6 +85,61 @@ function setLanguage(lang) {
         if (translations[lang][key]) {
             elem.innerText = translations[lang][key];
         }
+    });
+    document.querySelectorAll('[data-key-placeholder]').forEach(elem => {
+        const key = elem.getAttribute('data-key-placeholder');
+        if (translations[lang][key]) {
+            elem.placeholder = translations[lang][key];
+        }
+    });
+    window._currentLang = lang;
+}
+
+/* İLETİŞİM FORMU */
+function handleContactSubmit(e) {
+    e.preventDefault();
+
+    const emailInput = document.getElementById('senderEmail');
+    const messageInput = document.getElementById('senderMessage');
+    const emailError = document.getElementById('emailError');
+    const statusEl = document.getElementById('contactStatus');
+    const lang = window._currentLang || 'en';
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!emailRegex.test(emailInput.value.trim())) {
+        emailError.style.display = 'block';
+        emailInput.classList.add('input-error');
+        return;
+    }
+    emailError.style.display = 'none';
+    emailInput.classList.remove('input-error');
+
+    const btn = e.target.querySelector('.btn-send');
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+
+    fetch('https://formsubmit.co/ajax/kemalali994@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+            email: emailInput.value.trim(),
+            message: messageInput.value.trim(),
+            _subject: 'Portfolio Contact Form'
+        })
+    })
+    .then(res => res.json())
+    .then(() => {
+        statusEl.textContent = translations[lang].contact_success;
+        statusEl.className = 'contact-status success';
+        e.target.reset();
+    })
+    .catch(() => {
+        statusEl.textContent = translations[lang].contact_error;
+        statusEl.className = 'contact-status error';
+    })
+    .finally(() => {
+        btn.disabled = false;
+        btn.style.opacity = '1';
     });
 }
 
